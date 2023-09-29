@@ -28,11 +28,11 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json({ limit: "50mb" }));
 // Set up CORS to allow React app to make requests to this API
-const corsOptions = {
-  origin: 'http://localhost:3000',
-};
+// const corsOptions = {
+//   origin: 'http://localhost:3000',
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 
 // view engine setup
