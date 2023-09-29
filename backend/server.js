@@ -9,12 +9,6 @@ var cors = require("cors");
 
 require("dotenv").config();
 
-app.use(
-  cors({
-    origin: 'http://localhost:3000',// Replace with your specific origin(s)
-    credentials: true, // Allow credentials (cookies, authentication headers)
-  })
-);
 
 // connect to the database with AFTER the config vars are processed
 const db = require("./config/database");
@@ -31,8 +25,14 @@ const stripeRouter = require("./routes/stripe");
 
 // const port = 8000;
 
-var app = express();
 const bodyParser = require("body-parser");
+
+app.use(
+  cors({
+    origin: 'http://localhost:3000',// Replace with your specific origin(s)
+    credentials: true, // Allow credentials (cookies, authentication headers)
+  })
+);
 
 
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
