@@ -17,6 +17,42 @@ const Home = () => {
 // Fetch Stores Data
   const token = localStorage.getItem("token");
 
+  const getStores = async () => {
+    await axios({
+        method: "GET",
+        url: `https://frantic-coveralls-duck.cyclic.cloud/stores`,
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+    })
+    .then((response) => {
+        console.log(response);
+        setStore(response.data.stores);
+        setOpenSnackbar(true);
+        setSnackbarMessage("Stores retrieved successfully!");
+        setSnackbarSeverity("success");
+    })
+    .catch((error) => {
+        console.log(error);
+        if (error.response.status === 401) {
+            setOpenSnackbar(true);
+            setSnackbarMessage("Please login or create an account to view this page! Redirecting in 3 seconds...");
+            setSnackbarSeverity("error");
+            handleExpire();
+            setTimeout(() => {
+                navigate("/login");
+                window.location.reload();
+            }
+            , 3000);
+        }
+    });
+}
+
+useEffect(() => {
+  getStores();
+}, []);
+
   const { data: stores, error, isLoading } = useGetStoresQuery(token);
   const navigate = useNavigate();
 
