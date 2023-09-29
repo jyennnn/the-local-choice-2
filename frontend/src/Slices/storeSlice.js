@@ -9,7 +9,7 @@ export const storesApiSlice = apiSlice.injectEndpoints({
                 return {
                     url: STORE_URL,
                     method: "GET",
-                    // credentials: 'include',
+                    credentials: 'include',
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
