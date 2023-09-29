@@ -42,14 +42,14 @@ import { apiSlice } from "./apiSlice";
 export const storesApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getStores: builder.query({
-            query: () => {
+            query: (token) => {
                 return {
                     url: STORE_URL,
                     method: "GET",
-                    // headers: {
-                    //     "Content-Type": "application/json",
-                    //     Authorization: `Bearer ${token}`,
-                    // },
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
                 };
             },
             keepUnusedDataFor: 30
