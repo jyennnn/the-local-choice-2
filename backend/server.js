@@ -32,12 +32,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json({ limit: "50mb" }));
 
-app.use(
-  cors({
-    origin: 'https://the-local-choice-2.vercel.app',// Replace with your specific origin(s)
-    credentials: true, // Allow credentials (cookies, authentication headers)
-  })
-);
+app.use(cors());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
