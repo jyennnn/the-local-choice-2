@@ -8,6 +8,14 @@ var logger = require("morgan");
 var cors = require("cors");
 
 require("dotenv").config();
+
+app.use(
+  cors({
+    origin: 'http://localhost:3000',// Replace with your specific origin(s)
+    credentials: true, // Allow credentials (cookies, authentication headers)
+  })
+);
+
 // connect to the database with AFTER the config vars are processed
 const db = require("./config/database");
 
@@ -26,31 +34,9 @@ const stripeRouter = require("./routes/stripe");
 var app = express();
 const bodyParser = require("body-parser");
 
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // Replace with your specific origin(s)
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
-
-app.use(
-  cors({
-    origin: '*', // Replace with your specific origin(s)
-    credentials: true, // Allow credentials (cookies, authentication headers)
-  })
-);
 
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json({ limit: "50mb" }));
-// Set up CORS to allow React app to make requests to this API
-// const corsOptions = {  
-//   origin: 'http://localhost:3000',
-// };
-
-// app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
-
-
-
-
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -71,12 +57,6 @@ app.use("/profile", profileRouter);
 
 app.use("/", stripeRouter);
 
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin: process.env.CLIENT_URL,
-//   })
-// );
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
