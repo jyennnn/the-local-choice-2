@@ -46,9 +46,10 @@ export const storesApiSlice = apiSlice.injectEndpoints({
                 return {
                     url: STORE_URL,
                     method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
+                    // headers: {
+                    //     "Content-Type": "application/json",
+                    //     Authorization: `Bearer ${token}`,
+                    // },
                 };
             },
             keepUnusedDataFor: 30
