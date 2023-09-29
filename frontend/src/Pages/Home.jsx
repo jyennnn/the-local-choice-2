@@ -11,7 +11,7 @@ import Notification from "../Components/Notification";
 import { handleExpire } from "../utils/logoutUtils";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Components/Loading";
-
+import axios from "axios";
 
 const Home = () => {
 // Fetch Stores Data
@@ -27,25 +27,10 @@ const Home = () => {
         },
     })
     .then((response) => {
-        console.log(response);
-        setStore(response.data.stores);
-        setOpenSnackbar(true);
-        setSnackbarMessage("Stores retrieved successfully!");
-        setSnackbarSeverity("success");
+        console.log('successful!!!!', response);
     })
     .catch((error) => {
-        console.log(error);
-        if (error.response.status === 401) {
-            setOpenSnackbar(true);
-            setSnackbarMessage("Please login or create an account to view this page! Redirecting in 3 seconds...");
-            setSnackbarSeverity("error");
-            handleExpire();
-            setTimeout(() => {
-                navigate("/login");
-                window.location.reload();
-            }
-            , 3000);
-        }
+        console.log('error):',error);
     });
 }
 
