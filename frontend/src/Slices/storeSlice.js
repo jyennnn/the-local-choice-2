@@ -50,7 +50,6 @@ export const storesApiSlice = apiSlice.injectEndpoints({
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
-                    credentials: true,
                 };
             },
             keepUnusedDataFor: 30

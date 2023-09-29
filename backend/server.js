@@ -49,12 +49,12 @@ app.use("/profile", profileRouter);
 
 app.use("/", stripeRouter);
 
-app.use(
-  cors({
-    credentials: true,
-    origin: process.env.CLIENT_URL,
-  })
-);
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: process.env.CLIENT_URL,
+//   })
+// );
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
