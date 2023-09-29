@@ -16,6 +16,7 @@ import Loading from "../Components/Loading";
 const Home = () => {
 // Fetch Stores Data
   const token = localStorage.getItem("token");
+  console.log(token)
   const { data: stores, error, isLoading } = useGetStoresQuery(token);
   const navigate = useNavigate();
 
