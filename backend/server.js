@@ -26,26 +26,23 @@ const stripeRouter = require("./routes/stripe");
 var app = express();
 const bodyParser = require("body-parser");
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization" // Fixed the typo here
-  );
-  if (req.method === "OPTIONS") {
-    res.header(
-      "Access-Control-Allow-Methods",
-      "POST, PUT, PATCH, GET, DELETE"
-    );
-    return res.status(200).json({});
-  }
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // Replace with your specific origin(s)
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
+app.use(
+  cors({
+    origin: 'http://localhost:3000', // Replace with your specific origin(s)
+    credentials: true, // Allow credentials (cookies, authentication headers)
+  })
+);
 
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json({ limit: "50mb" }));
 // Set up CORS to allow React app to make requests to this API
-// const corsOptions = {
+// const corsOptions = {  
 //   origin: 'http://localhost:3000',
 // };
 
