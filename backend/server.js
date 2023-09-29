@@ -34,7 +34,7 @@ const bodyParser = require("body-parser");
 
 app.use(
   cors({
-    origin: 'http://localhost:3000', // Replace with your specific origin(s)
+    origin: '*', // Replace with your specific origin(s)
     credentials: true, // Allow credentials (cookies, authentication headers)
   })
 );
