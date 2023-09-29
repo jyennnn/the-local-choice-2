@@ -17,26 +17,26 @@ const Home = () => {
 // Fetch Stores Data
   const token = localStorage.getItem("token");
 
-  const getStores = async () => {
-    await axios({
-        method: "GET",
-        url: `https://frantic-coveralls-duck.cyclic.cloud/stores`,
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-        },
-    })
-    .then((response) => {
-        console.log('successful!!!!', response);
-    })
-    .catch((error) => {
-        console.log('error):',error);
-    });
-}
+//   const getStores = async () => {
+//     await axios({
+//         method: "GET",
+//         url: `https://frantic-coveralls-duck.cyclic.cloud/stores`,
+//         headers: {
+//             "Content-Type": "application/json",
+//             Authorization: `Bearer ${token}`,
+//         },
+//     })
+//     .then((response) => {
+//         console.log('successful!!!!', response);
+//     })
+//     .catch((error) => {
+//         console.log('error):',error);
+//     });
+// }
 
-useEffect(() => {
-  getStores();
-}, []);
+// useEffect(() => {
+//   getStores();
+// }, []);
 
   const { data: stores, error, isLoading } = useGetStoresQuery(token);
   const navigate = useNavigate();
