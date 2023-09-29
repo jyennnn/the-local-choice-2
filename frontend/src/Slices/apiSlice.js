@@ -4,7 +4,10 @@ import { BASE_URL } from '../constants'
 
 const baseQuery = fetchBaseQuery({baseUrl: BASE_URL})
 export const apiSlice = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+    baseQuery,
+    defaultOptions: {
+        mode: 'no-cors', // Set the default mode to 'no-cors'
+      },
     tagTypes: [ 'Store',
                 'Product',
                 'Order',
