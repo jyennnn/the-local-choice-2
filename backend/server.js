@@ -34,7 +34,7 @@ app.use(express.json({ limit: "50mb" }));
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',// Replace with your specific origin(s)
+    origin: 'http://localhost:3000/home',// Replace with your specific origin(s)
     credentials: true, // Allow credentials (cookies, authentication headers)
   })
 );

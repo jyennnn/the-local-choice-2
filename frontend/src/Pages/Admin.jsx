@@ -28,7 +28,6 @@ const Admin = () => {
     const getStores = async () => {
         await axios({
             method: "GET",
-            mode: 'no-cors',
             url: `${process.env.REACT_APP_SERVER_URL}/config/stores`,
             headers: {
                 "Content-Type": "application/json",
@@ -67,7 +66,6 @@ const Admin = () => {
     const deleteStore = async (storeId) => {
         await axios({
             method: "DELETE",
-            mode: 'no-cors',
             url: `${process.env.REACT_APP_SERVER_URL}/config/stores/${storeId}`,
             headers: {
                 "Content-Type": "application/json",
