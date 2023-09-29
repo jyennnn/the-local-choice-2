@@ -11,33 +11,11 @@ import Notification from "../Components/Notification";
 import { handleExpire } from "../utils/logoutUtils";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Components/Loading";
-import axios from "axios";
 
 const Home = () => {
 // Fetch Stores Data
   const token = localStorage.getItem("token");
-
-//   const getStores = async () => {
-//     await axios({
-//         method: "GET",
-//         url: `https://frantic-coveralls-duck.cyclic.cloud/stores`,
-//         headers: {
-//             "Content-Type": "application/json",
-//             Authorization: `Bearer ${token}`,
-//         },
-//     })
-//     .then((response) => {
-//         console.log('successful!!!!', response);
-//     })
-//     .catch((error) => {
-//         console.log('error):',error);
-//     });
-// }
-
-// useEffect(() => {
-//   getStores();
-// }, []);
-
+  
   const { data: stores, error, isLoading } = useGetStoresQuery(token);
   const navigate = useNavigate();
 
